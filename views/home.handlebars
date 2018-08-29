@@ -1,1 +1,67 @@
-<h1>Hello World</h1>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-0">
+        <div class="container">
+            <a class="navbar-brand" href="#">Article Search</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Saved Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="#">Clear Saved Articles</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center bg-white mt-0">
+        <div class="overlay"></div>
+            <img src="./assets/images/globalnewsbg.jpg" alt="">
+            <br>
+            <h1 class="mt-4">New York Times Article Search</h1>
+        </div>
+    </div>
+    <div class="container-fluid article-container">
+        {{#each articles}}
+        <div class="card" data-_id="{{this._id}}">
+            <div class="card-header">
+                <h3>
+                    <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.url}}">{{this.headline}}</a>
+                    <a class="btn btn-success save">Save Article</a>
+                </h3>
+            </div>
+            <div class="card-body">{{this.summary}}</div>
+        </div>
+        {{/each}} {{#unless articles.length}}
+        <div class="alert alert-warning text-center">
+            <h4>There are no new articles. Please check back later.</h4>
+        </div>
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>What would you like to do?</h3>
+            </div>
+            <div class="card-body text-center">
+                <h4>
+                    <a href="scrape-new">Try scraping for new articles!</a>
+                </h4>
+                <h4>
+                    <a href="/saved">View Saved Articles</a>
+                </h4>
+            </div>
+        </div>
+        {{/unless}}
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="/assets/javascript/index.js"></script>
+
